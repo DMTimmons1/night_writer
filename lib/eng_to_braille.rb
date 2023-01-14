@@ -1,4 +1,5 @@
 class EngToBraille
+  attr_reader :braille_translation
   def initialize
     @braille_translation = {
       "a" => ["0.", "..", ".."],
