@@ -1,6 +1,6 @@
 class ReadFile
   def read
-    handle = ARGV[0]
-    File.read(handle)
+    read_file = ARGV[0]
+    File.read(read_file)
   end
 end
