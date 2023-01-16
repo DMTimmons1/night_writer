@@ -17,4 +17,11 @@ describe NightWriter do
       allow(night_writer).to receive(:new_file).and_return('fixture_translation.txt')
     end
   end
+
+  describe "#write_to_file" do
+    it "can write to the new file" do
+      night_writer.write_to_file
+      allow(night_writer).to receive(:new_file).and_return('fixture_translation.txt')
+    end
+  end
 end
