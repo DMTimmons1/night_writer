@@ -31,4 +31,12 @@ describe NightWriter do
       expect(night_writer.text_total).to eq(35)
     end
   end
+
+  describe "#return_message" do
+    it "can read the arguments and return an accurate message" do
+      allow(night_writer).to receive(:new_file).and_return('braille.txt')
+      allow(night_writer).to receive(:text_total).and_return('35')
+      expect(night_writer.return_message).to eq("Created braille.txt containing 35 charcters.")
+    end
+  end
 end
