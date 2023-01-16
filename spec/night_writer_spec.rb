@@ -24,4 +24,11 @@ describe NightWriter do
       allow(night_writer).to receive(:new_file).and_return('fixture_translation.txt')
     end
   end
+
+  describe '#text_total' do
+    it 'can read the total characters and return the correct total' do
+      allow(night_writer).to receive(:new_file).and_return('./fixture_data/fixture_message.txt')
+      expect(night_writer.text_total).to eq(35)
+    end
+  end
 end
