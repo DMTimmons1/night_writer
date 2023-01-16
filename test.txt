@@ -1,41 +1,25 @@
 require 'spec_helper.rb'
 
+# this test also requires an argument due to ARGV.
 
-# for these tests to work with the console ARGVs, I would need to change the ARGV index positions in my method to
-# account for the additional index position added using RSpec. I may make a mock WriteToFile class to accurately
-# reflect this. For now, the first index is reading as THIS FILE and returning the manipulated output in the
-# new file created.
+describe NightWriter do
+  let(:night_writer) { NightWriter.new }
+  let(:mocked_write_file) { double('WriteToFile') }
 
-# when running theses tests, you only need one argument after running the spec, which will be the new 
-# newly created, manipulated file.
-
-
-RSpec.describe WriteToFile do
-  let(:writer) { WriteToFile.new }
-  let(:file_data) { "test data" }
-
-  before(:each) do
-    allow(File).to receive(:new).with(ARGV[1], "w").and_return(double("file", :write => nil))
-    allow(File).to receive(:open).with(ARGV[0]).and_return(double("file", :read => file_data, :close => nil))
+  before do
+    allow(WriteToFile).to receive(:new).and_return(mocked_write_file)
+    allow(mocked_write_file).to receive(:write_to_file)
+    allow(File).to receive(:readlines).and_return(['test', 'file'])
   end
 
-  describe '#create_new_file' do
-    it 'creates a new file with the given file name' do
-      expect(File).to receive(:new).with(ARGV[1], "w")
-      writer.create_new_file
-    end
+  it "exists" do
+    expect(night_writer).to be_an_instance_of(NightWriter)
   end
 
-  describe "#manipulate_file_data" do
-   it "can manipulate the file data" do
-      expect(writer.manipulate_file_data).to eq(file_data)
-    end
-  end
-
-  describe "#add_new_file_data" do
-    it "can open the file and add the manipulated data" do
-      expect(File).to receive(:open).with(ARGV[1], "w").and_return(double("file", :write => nil, :close => nil))
-      writer.add_new_file_data
+  describe '#write_to_file' do
+    it 'calls write_to_file on the WriteToFile instance' do
+      night_writer.write_to_file
+      expect(mocked_write_file).to have_received(:write_to_file)
     end
   end
 end
