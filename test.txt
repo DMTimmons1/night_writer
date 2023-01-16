@@ -28,7 +28,14 @@ RSpec.describe WriteToFile do
 
   describe "#manipulate_file_data" do
    it "can manipulate the file data" do
-    expect(writer.manipulate_file_data).to eq(file_data)
+      expect(writer.manipulate_file_data).to eq(file_data)
+    end
+  end
+
+  describe "#add_new_file_data" do
+    it "can open the file and add the manipulated data" do
+      expect(File).to receive(:open).with(ARGV[1], "w").and_return(double("file", :write => nil, :close => nil))
+      writer.add_new_file_data
     end
   end
 end
