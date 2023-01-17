@@ -32,4 +32,12 @@ describe Translator do
                                           ["00", ".0", ".."]])
     end
   end
+
+  describe "#format_braille" do
+    it "formats the character" do
+      translator.translate
+      translator.format_braille
+      expect(translator.format_braille).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n\n\n\n")
+    end
+  end
 end
