@@ -24,12 +24,8 @@ class NightWriter
    p "Created #{ARGV[1]} containing #{text_total} charcters."
   end
 
-  # def start
-  #   self.write_to_file
-  #   self.return_message
-  # end
-
 end
 
 # night_writer = NightWriter.new
-# night_writer.start
+# night_writer.write_to_file
+# night_writer.return_message
