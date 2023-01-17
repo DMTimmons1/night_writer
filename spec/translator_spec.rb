@@ -15,4 +15,21 @@ describe Translator do
       expect(translator.formatted_braille).to eq("")
     end
   end
+
+  describe "#translate" do
+    it "translates a character to braille" do
+      expect(file_contents).to eq("Hello world")
+      expect(translator.translate).to eq([["0.", "00", ".."],
+                                          ["0.", ".0", ".."],
+                                          ["0.", "0.", "0."],
+                                          ["0.", "0.", "0."],
+                                          ["0.", ".0", "0."],
+                                          ["..", "..", ".."],
+                                          [".0", "00", ".0"],
+                                          ["0.", ".0", "0."],
+                                          ["0.", "00", "0."],
+                                          ["0.", "0.", "0."],
+                                          ["00", ".0", ".."]])
+    end
+  end
 end
