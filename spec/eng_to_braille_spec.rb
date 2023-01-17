@@ -35,6 +35,7 @@ RSpec.describe EngToBraille do
       expect(eng_to_braille.braille_translation["x"]).to eq(["00", "..", "00"])
       expect(eng_to_braille.braille_translation["y"]).to eq(["00", ".0", "00"])
       expect(eng_to_braille.braille_translation["z"]).to eq(["0.", ".0", "00"])
+      expect(eng_to_braille.braille_translation[" "]).to eq(["..", "..", ".."])
     end
   end
 end

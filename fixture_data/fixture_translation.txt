@@ -1,1 +1,0 @@
-Test data to test night_writer_spec

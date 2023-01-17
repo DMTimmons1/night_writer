@@ -3,11 +3,9 @@ require './lib/write_to_file'
 
 class NightWriter
   attr_reader :read_file
-  def initialize(existing_file, new_file)
+  def initialize
     @read_file = ReadFile.new.read
     @write_file = WriteToFile.new
-    @existing_file = ARGV[0]
-    @new_file = ARGV[1]
   end
 
   def write_to_file
@@ -15,7 +13,7 @@ class NightWriter
   end
 
   def text_total
-    lines = File.readlines(new_file)
+    lines = File.readlines(ARGV[1])
     line_count = lines.size
     text = lines.join 
     total_characters = text.length
@@ -23,10 +21,15 @@ class NightWriter
   end
   
   def return_message
-    "Created #{new_file} containing #{text_total} charcters." 
+   p "Created #{ARGV[1]} containing #{text_total} charcters."
   end
+
+  # def start
+  #   self.write_to_file
+  #   self.return_message
+  # end
+
 end
 
 # night_writer = NightWriter.new
-# night_writer.write_to_file
-# night_writer.return_message
+# night_writer.start
