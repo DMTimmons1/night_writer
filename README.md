@@ -1,4 +1,4 @@
-# Night Writer (Braille Converter)
+# Night Writer (English to Braille Converter)
 
 The code at the end of <night_writer.rb> lines: 29-31 is commented out for RSpec testing, when using <night_writer.rb> as a runner, these will need to be commented back in and the program will work as expected.
 
