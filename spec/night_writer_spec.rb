@@ -3,6 +3,7 @@ require 'spec_helper.rb'
 
 describe NightWriter do
   let(:night_writer) { NightWriter.new }
+  let(:translator) { Translator.new }
   ARGV[0] = './fixture_data/fixture_message.txt'
   ARGV[1] = './fixture_data/fixture_write_to_file.txt'
   describe "#initialize" do
